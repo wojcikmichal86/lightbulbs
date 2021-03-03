@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,7 @@
         LightbulbSocket.onmessage = function(event){
             const data = event.data
             object = JSON.parse(data)
+            console.log(object);
             document.querySelector('#app').innerHTML = '';
             header_row = document.createElement('tr')
             header_row.style.width = '100%';
@@ -36,15 +38,15 @@
             tr.setAttribute("style", "background-color: white;");
             tr.style.height = '30px';
                 for (let k in item){
-                console.log(k + ' is ' + item[k])
+                //console.log(k + ' is ' + item[k])
                 td = document.createElement('td');
                 if (k=="turned_on"){
                 image = document.createElement('img');
-                image.style.width = '5%';
+                image.style.width = '20%';
                 if (item[k]==true){
-                image.src = "https://media.geeksforgeeks.org/wp-content/uploads/ONbulb.jpg";
+                image.src = "{% static 'images/ONbulb.jpg' %}";
                 } else {
-                image.src = "https://media.geeksforgeeks.org/wp-content/uploads/OFFbulb.jpg";
+                image.src = "{% static 'images/OFFbulb.jpg' %}";
                 }
                 td.appendChild(image);
                 } else {

@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import DeviceSerializer, BlindsSerializer, TemperatureSerializer
+from mysite.consumers import DeviceConsumer,BlindsConsumer, TemperatureConsumer
 from .models import Lightbulb, Blinds, Temperature
 
 
@@ -25,6 +26,7 @@ def LightbulbCreate(request):
         serializer.save() #saves the object in the DB with the request json data
     return Response(serializer.data) #sends the json as a respons to the request
 
+
 @api_view(['PUT'])
 def LightbulbUpdate(request, pk):
     device = Lightbulb.objects.get(id=pk) #gets an object from the Lightbulb model by id
@@ -39,7 +41,6 @@ def LightbulbDelete(request, pk):
     device = Lightbulb.objects.get(id=pk) #gets an object from the Lightbulb model by id
     device.delete() # removes the object from the DB
     return Response('Deleted') #sends the string as a response to the request (no json is sent)
-
 
 
 @api_view(['GET'])
@@ -62,6 +63,7 @@ def BlindsCreate(request):
     if serializer.is_valid(): #validates the data from the request
         serializer.save() #saves the object in the DB with the request json data
     return Response(serializer.data) #sends the json as a respons to the request
+
 
 @api_view(['PUT'])
 def BlindsUpdate(request, pk):

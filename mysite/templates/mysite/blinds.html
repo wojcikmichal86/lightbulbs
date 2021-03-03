@@ -40,11 +40,11 @@
                 td = document.createElement('td');
                 if (k=="closed"){
                 image = document.createElement('img');
-                image.style.width = '5%';
+                image.style.width = '20s%';
                 if (item[k]==true){
-                image.src = "https://media.geeksforgeeks.org/wp-content/uploads/ONbulb.jpg";
+                image.src = "{% static 'images/ONblind.png' %}";
                 } else {
-                image.src = "https://media.geeksforgeeks.org/wp-content/uploads/OFFbulb.jpg";
+                image.src = "{% static 'images/OFFblind.png' %}";
                 }
                 td.appendChild(image);
                 } else {

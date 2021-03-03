@@ -12,14 +12,12 @@ class DeviceConsumer(AsyncWebsocketConsumer):
         await self.accept()
         while True:
             await self.fetch_data()
-            sleep(10)
+            await sleep(0.5)
 
 
     async def fetch_data(self):
         message = await self.get_objects()
         await self.send(json.dumps(message))
-
-
 
 
     @database_sync_to_async
@@ -35,7 +33,7 @@ class BlindsConsumer(AsyncWebsocketConsumer):
         await self.accept()
         while True:
             await self.fetch_data()
-            sleep(10)
+            await sleep(0.5)
 
 
     async def fetch_data(self):
@@ -56,7 +54,7 @@ class TemperatureConsumer(AsyncWebsocketConsumer):
         await self.accept()
         while True:
             await self.fetch_data()
-            sleep(10)
+            await sleep(0.5)
 
 
     async def fetch_data(self):
