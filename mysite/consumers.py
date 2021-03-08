@@ -10,9 +10,9 @@ class DeviceConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         print('connected')
         await self.accept()
-        while True:
-            await self.fetch_data()
-            await sleep(0.5)
+        #while True:
+        await self.fetch_data()
+        await sleep(0.5)
 
 
     async def fetch_data(self):
@@ -22,8 +22,8 @@ class DeviceConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def get_objects(self):
-        devices = Lightbulb.objects.all()
-        serializer = DeviceSerializer(devices, many=True)
+        devices = Lightbulb.objects.get(id=1)
+        serializer = DeviceSerializer(devices, many=False)
         return serializer.data
 
 
@@ -31,9 +31,9 @@ class BlindsConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         print('connected')
         await self.accept()
-        while True:
-            await self.fetch_data()
-            await sleep(0.5)
+        #while True:
+        await self.fetch_data()
+        await sleep(0.5)
 
 
     async def fetch_data(self):
@@ -43,8 +43,8 @@ class BlindsConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def get_objects(self):
-        devices = Blinds.objects.all()
-        serializer = BlindsSerializer(devices, many=True)
+        devices = Blinds.objects.get(id=1)
+        serializer = BlindsSerializer(devices, many=False)
         return serializer.data
 
 
@@ -52,9 +52,9 @@ class TemperatureConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         print('connected')
         await self.accept()
-        while True:
-            await self.fetch_data()
-            await sleep(0.5)
+        #while True:
+        await self.fetch_data()
+        await sleep(0.5)
 
 
     async def fetch_data(self):
@@ -66,6 +66,6 @@ class TemperatureConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def get_objects(self):
-        devices = Temperature.objects.all()
-        serializer = TemperatureSerializer(devices, many=True)
+        devices = Temperature.objects.get(id=1)
+        serializer = TemperatureSerializer(devices, many=False)
         return serializer.data

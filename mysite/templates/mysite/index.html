@@ -25,7 +25,6 @@
             font-size: 1.75em;
             font-weight: bold;
             color: #858688;
-            transition: 0.24s 0.2s;
         }
 
         .navbar .menu{
@@ -38,25 +37,57 @@
             border: 150px solid transparent;
             cursor: default;
             border-radius: 50%;
-            z-index: -1;
         }
 
         .navbar .menu li:nth-child(1){
             position: absolute;
-            top: -300px;
+            top: -400px;
             left: -70px;
+        }
+
+        .navbar .menu li:nth-child(1) label{
+            top: 150px;
+            left: 15px;
+            line-height: 30px;
+            font-size: 0.75em;
+            position: absolute;
         }
 
         .navbar .menu li:nth-child(2){
             position: absolute;
-            top: -200px;
-            left: 170px;
+            top: -250px;
+            left: 200px;
         }
 
-        .navbar .menu li:nth-child(3){
+
+        .navbar .menu li:nth-child(2) label{
+            top: 150px;
+            left: 40px;
+            line-height: 30px;
+            font-size: 0.75em;
             position: absolute;
-            top: 15px;
-            left: 170px;
+        }
+
+
+        .navbar .menu li:nth-child(3) p{
+            width: 150px;
+            background: white;
+            height: 150px;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+            line-height: 150px;
+            text-align: center;
+            font-size: 1.75em;
+            left: 200px;
+        }
+
+        .navbar .menu li:nth-child(3) label{
+            top: 185px;
+            left: 205px;
+            line-height: 30px;
+            font-size: 0.75em;
+            position: absolute;
         }
 
         .navbar .menu li:nth-child(4){
@@ -78,16 +109,11 @@
             left: -570px;
         }
 
-        .navbar .menu li a{
+        .navbar .menu li img{
             width: 150px;
             height: 150px;
-            line-height:150px;
-            border-radius: 50%;
-            background: white;
             position: absolute;
-            font-size: 59%;
-            color: #05DBF2;
-            transition: 0.7s;
+            border-radius: 50%;
         }
 
 
@@ -95,16 +121,89 @@
 
 </head>
 <body>
-<div class="navbar">Control
+<div class="navbar"><p>Control</p>
 <ul class="menu">
-    <li><a href="/lightbulbs/" class="">Lightbulbs</a></li>
-    <li><a href="/blinds/" class="">Blinds</a></li>
-    <li><a href="/temperature/" class="">Temperature</a></li>
-    <li><a href="" class="">Other</a></li>
+    <li id="lightbulbs"><label>Lightbulbs</label></li>
+    <li id="blinds"><label>Blinds</label></li>
+    <li id="temperature"><label>Temperature</label></li>
+    <li id="other"><label>Other</label></li>
     <li><a href="" class="">Cisco Codec</a></li>
-    <li><a href="" class="">Cisco Touch10</a</li>
+    <li><a href="" class="">Cisco Touch10</a></li>
+
 </ul>
 </div>
+<script>
 
+        const LightbulbSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/lightbulbs/'
+        );
+
+
+        LightbulbSocket.onmessage = function(event){
+            const data = event.data
+            object = JSON.parse(data)
+            console.log(object);
+            for (k in object){
+            console.log(k + ' is ' + object[k]);
+            if (k=="turned_on"){
+                image = document.createElement('img');
+                if (object[k]==true){
+                image.src = "{% static 'images/ONbulb.png' %}";
+                } else {
+                image.src = "{% static 'images/OFFbulb.png' %}";
+                }
+                document.querySelector('#lightbulbs').appendChild(image)
+                }
+            }
+        }
+
+        const BlindsSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/blinds/'
+        );
+
+
+        BlindsSocket.onmessage = function(event){
+            const data = event.data
+            object = JSON.parse(data)
+            console.log(object);
+            for (k in object){
+            console.log(k + ' is ' + object[k]);
+            if (k=="closed"){
+                image = document.createElement('img');
+                if (object[k]==true){
+                image.src = "{% static 'images/ONblinds.png' %}";
+                } else {
+                image.src = "{% static 'images/OFFblinds.png' %}";
+                }
+                document.querySelector('#blinds').appendChild(image)
+                }
+            }
+        }
+
+        const TemperatureSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/temperature/'
+        );
+
+
+        TemperatureSocket.onmessage = function(event){
+            const data = event.data
+            object = JSON.parse(data)
+            console.log(object);
+            for (k in object){
+            console.log(k + ' is ' + object[k]);
+            if (k=="temperature"){
+                p = document.createElement('p');
+                p.innerText=object[k];
+                document.querySelector('#temperature').appendChild(p)
+                }
+            }
+        }
+    </script>
 </body>
 </html>
