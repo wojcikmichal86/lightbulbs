@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Lightbulb Status</title>
+</head>
+<body>
+    <table id="app", width="100%"></table>
+    <script>
+
+        const LightbulbSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/lightbulbs/'
+        );
+
+
+        LightbulbSocket.onmessage = function(event){
+            const data = event.data
+            object = JSON.parse(data)
+            console.log(object);
+            document.querySelector('#app').innerHTML = '';
+            header_row = document.createElement('tr')
+            header_row.style.width = '100%';
+            header_row.style.height = '30px';
+            document.querySelector('#app').appendChild(header_row)
+            for (let k in object[0]){
+                th = document.createElement('th')
+                th.innerText = k.toUpperCase()
+                th.setAttribute("style", "background-color: #81ba5a;");
+                th.style.borderRadius = "10px";
+                header_row.appendChild(th);
+            }
+            for (const item of object){
+            tr = document.createElement('tr')
+            tr.setAttribute("style", "background-color: white;");
+            tr.style.height = '30px';
+                for (let k in item){
+                //console.log(k + ' is ' + item[k])
+                td = document.createElement('td');
+                if (k=="turned_on"){
+                image = document.createElement('img');
+                image.style.width = '20%';
+                if (item[k]==true){
+                image.src = "{% static 'images/ONbulb.jpg' %}";
+                } else {
+                image.src = "{% static 'images/OFFbulb.jpg' %}";
+                }
+                td.appendChild(image);
+                } else {
+                td.innerText = item[k];
+                td.setAttribute("style", "background-color: #009edc;");
+                td.style.borderRadius = "10px";
+                }
+                td.style.textAlign = "center";
+                tr.appendChild(td);
+                }
+            document.querySelector('#app').appendChild(tr)
+
+            }
+
+        }
+
+    </script>
+</body>
+</html>

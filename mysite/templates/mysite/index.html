@@ -1,66 +1,110 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>Lightbulb Status</title>
-</head>
-<body>
-    <table id="app", width="100%"></table>
-    <script>
+    <meta charset="UTF-8">
+    <title>Cisco Control Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            background-color: #E9E9E9;
+            font-family: tahoma;
+            overflow: hidden;
+        }
+        .navbar{
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 390px auto;
+            right: -150px;
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.75em;
+            font-weight: bold;
+            color: #858688;
+            transition: 0.24s 0.2s;
+        }
 
-        const LightbulbSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/lightbulbs/'
-        );
+        .navbar .menu{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: -75px;
+            left: -75px;
+            border: 150px solid transparent;
+            cursor: default;
+            border-radius: 50%;
+            z-index: -1;
+        }
 
+        .navbar .menu li:nth-child(1){
+            position: absolute;
+            top: -300px;
+            left: -70px;
+        }
 
-        LightbulbSocket.onmessage = function(event){
-            const data = event.data
-            object = JSON.parse(data)
-            document.querySelector('#app').innerHTML = '';
-            header_row = document.createElement('tr')
-            header_row.style.width = '100%';
-            header_row.style.height = '30px';
-            document.querySelector('#app').appendChild(header_row)
-            for (let k in object[0]){
-                th = document.createElement('th')
-                th.innerText = k.toUpperCase()
-                th.setAttribute("style", "background-color: #81ba5a;");
-                th.style.borderRadius = "10px";
-                header_row.appendChild(th);
-            }
-            for (const item of object){
-            tr = document.createElement('tr')
-            tr.setAttribute("style", "background-color: white;");
-            tr.style.height = '30px';
-                for (let k in item){
-                console.log(k + ' is ' + item[k])
-                td = document.createElement('td');
-                if (k=="turned_on"){
-                image = document.createElement('img');
-                image.style.width = '5%';
-                if (item[k]==true){
-                image.src = "https://media.geeksforgeeks.org/wp-content/uploads/ONbulb.jpg";
-                } else {
-                image.src = "https://media.geeksforgeeks.org/wp-content/uploads/OFFbulb.jpg";
-                }
-                td.appendChild(image);
-                } else {
-                td.innerText = item[k];
-                td.setAttribute("style", "background-color: #009edc;");
-                td.style.borderRadius = "10px";
-                }
-                td.style.textAlign = "center";
-                tr.appendChild(td);
-                }
-            document.querySelector('#app').appendChild(tr)
+        .navbar .menu li:nth-child(2){
+            position: absolute;
+            top: -200px;
+            left: 170px;
+        }
 
-            }
+        .navbar .menu li:nth-child(3){
+            position: absolute;
+            top: 15px;
+            left: 170px;
+        }
+
+        .navbar .menu li:nth-child(4){
+            position: absolute;
+            top: 150px;
+            left: -70px;
+        }
+
+        .navbar .menu li:nth-child(5){
+            position: absolute;
+            top: -70px;
+            left: -330px;
 
         }
 
-    </script>
+        .navbar .menu li:nth-child(6){
+            position: absolute;
+            top: -70px;
+            left: -570px;
+        }
+
+        .navbar .menu li a{
+            width: 150px;
+            height: 150px;
+            line-height:150px;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+            font-size: 59%;
+            color: #05DBF2;
+            transition: 0.7s;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="navbar">Control
+<ul class="menu">
+    <li><a href="/lightbulbs/" class="">Lightbulbs</a></li>
+    <li><a href="/blinds/" class="">Blinds</a></li>
+    <li><a href="/temperature/" class="">Temperature</a></li>
+    <li><a href="" class="">Other</a></li>
+    <li><a href="" class="">Cisco Codec</a></li>
+    <li><a href="" class="">Cisco Touch10</a</li>
+</ul>
+</div>
+
 </body>
 </html>
