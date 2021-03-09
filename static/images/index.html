@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Segment Arrows (CSS vs. SVG)</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <main>
+  <header>
+      <slider min="1" max="4" step="1" label="Segments" v-model.number="segments"></slider>
+      <slider min="1" max="5" step="0.05" label="Size" v-model.number="size"></slider>
+  </header>
+  <section>
+    <div>
+      <h3>CSS</h3>
+      <div :style="'--fontsize: calc('+size+' * 1vmin)'">
+        <template v-for="n in segments">
+          <css-arrow :index="n-1" :segments="segments"></css-arrow>
+        </template>
+      </div>
+      <ul>
+        <li>template: simple</li>
+        <li>styles: more</li>
+        <li>resize: glitchy</li>
+      </ul>
+    </div>
+    <div class="vs">vs.</div>
+    <div>
+      <h3>SVG</h3>
+      <div :style="'--fontsize: calc('+size+' * 1vmin)'">
+        <template v-for="n in segments">
+          <svg-arrow :index="n-1" :segments="segments"></svg-arrow>
+        </template>
+      </div>
+      <ul>
+        <li>template: complex</li>
+        <li>styles: less</li>
+        <li>resize: buttery</li>
+      </ul>
+    </div>
+  </section>
+</main>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

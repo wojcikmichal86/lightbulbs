@@ -1,8 +1,8 @@
 from django.urls import path
-from .consumers import DeviceConsumer, BlindsConsumer, TemperatureConsumer
+from .consumers import LightbulbConsumer, BlindsConsumer, TemperatureConsumer
 
 ws_urlpatterns = [
-    path('ws/lightbulbs/', DeviceConsumer.as_asgi()),
-    path('ws/blinds/', BlindsConsumer.as_asgi()),
-    path('ws/temperature/', TemperatureConsumer.as_asgi())
+    path('ws/lightbulbs/', LightbulbConsumer.as_asgi()), #provides the view for the LightbulbWebsocket path
+    path('ws/blinds/', BlindsConsumer.as_asgi()), #provides the view for the BlindsWebsocket path
+    path('ws/temperature/', TemperatureConsumer.as_asgi()) #provides the view for the TemperatureWebsocket path
 ]
