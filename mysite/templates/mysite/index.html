@@ -97,7 +97,7 @@
         }
 
         .navbar .menu li:nth-child(4) label{
-            top: 170px;
+            top: 150px;
             left: 45px;
             line-height: 30px;
             font-size: 0.75em;
@@ -146,10 +146,12 @@
 
 .arrow {
   position: absolute;
-  bottom: 490px;
-  left: 210px;
-  width: calc(50%);
+  top: 60px;
+  left: -620px;
+  width: calc(500%);
   height: 0%;
+  z-index: -1;
+  color: white;
 }
 
 .arrow__body {
@@ -164,11 +166,13 @@
 
 .arrow_vert {
   position: absolute;
-  bottom: 472px;
-  left: 660px;
-  width: calc(40%);
+  top: 50px;
+  left: -250px;
+  width: calc(440%);
   height: 0%;
   transform: rotate(90deg);
+  z-index: -1;
+  color: white;
 }
 
 .arrow__body {
@@ -183,20 +187,24 @@
 
 .arrow_right {
   position: absolute;
-  top: 385px;
-  right: 400px;
-  width: calc(20%);
+  top: -30px;
+  left: 90px;
+  width: calc(220%);
   height: 0%;
   transform: rotate(147deg);
+  z-index: -1;
+  color: white;
 }
 
 .arrow_left {
   position: absolute;
-  bottom: 435px;
-  right: 400px;
-  width: calc(20%);
+  top: 125px;
+  left: 30px;
+  width: calc(220%);
   height: 0%;
   transform: rotate(25deg);
+  z-index: -1;
+  color: white;
 }
 
 
@@ -204,7 +212,10 @@
 
 </head>
 <body>
-  <div class="arrow">
+
+
+<div class="navbar"><p>Control</p>
+    <div class="arrow">
     <div class="arrow__body"></div>
   </div>
   <div class="arrow_vert">
@@ -216,8 +227,6 @@
   <div class="arrow_left">
     <div class="arrow__body"></div>
   </div>
-
-<div class="navbar"><p>Control</p>
 <ul class="menu">
     <li id="lightbulbs"><label>Lightbulbs</label></li>
     <li id="blinds"><label>Blinds</label></li>
@@ -269,9 +278,9 @@
             if (k=="closed"){
                 image = document.createElement('img');
                 if (object[k]==true){
-                image.src = "{% static 'images/ONblinds.png' %}";
-                } else {
                 image.src = "{% static 'images/OFFblinds.png' %}";
+                } else {
+                image.src = "{% static 'images/ONblinds.png' %}";
                 }
                 document.querySelector('#blinds').appendChild(image)
                 }

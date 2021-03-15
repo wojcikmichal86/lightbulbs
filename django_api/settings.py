@@ -32,9 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'mysite',
-    'rest_framework',
-    'channels',
+    'mysite', #added for the control panel view
+    'rest_framework', #added to use api_views and serializers
+    'channels', #added to use channels
     'myapi.apps.MyapiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,7 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_api.wsgi.application'
-ASGI_APPLICATION = 'django_api.asgi.application'
+ASGI_APPLICATION = 'django_api.asgi.application' #added to move to asgi (as per the websocket tutorials)
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -121,6 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+#the below part was added to setup static images
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

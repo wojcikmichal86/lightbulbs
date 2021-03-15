@@ -8,11 +8,10 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 """
 
 import os
-from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.routing import ProtocolTypeRouter, URLRouter #required for adding websocket protocol
 from channels.auth import AuthMiddlewareStack
 from django.core.asgi import get_asgi_application
-from channels.routing import ProtocolTypeRouter
-from mysite.routing import ws_urlpatterns
+from mysite.routing import ws_urlpatterns #adds the websocket urls to the protocol router
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_api.settings')
 

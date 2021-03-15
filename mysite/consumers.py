@@ -6,12 +6,12 @@ from channels.db import database_sync_to_async
 from asyncio import sleep
 
 
-class LightbulbConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
+class LightbulbConsumer(AsyncWebsocketConsumer): #fetches the data from the DB and sends it to the websocket
+    async def connect(self): #connects to the DB
         await self.accept()
         while True:
             await self.fetch_data()
-            await sleep(0.5)
+            await sleep(0.5) #sleeps is necessary so the browser doesn't crash
 
 
     async def fetch_data(self):
@@ -19,10 +19,10 @@ class LightbulbConsumer(AsyncWebsocketConsumer):
         await self.send(json.dumps(message))
 
 
-    @database_sync_to_async
+    @database_sync_to_async #turns the asyncronous websocket to syncronous DB
     def get_objects(self):
-        devices = Lightbulb.objects.get(id=1)
-        serializer = LightbulbSerializer(devices, many=False)
+        devices = Lightbulb.objects.get(id=1) #gets the first object from the model
+        serializer = LightbulbSerializer(devices, many=False) #uses the serializer to turn it into dict
         return serializer.data
 
 

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6b28431-4ab0-4243-842a-833d7f1af467" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mysite/templates/mysite/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapi/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapi/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapi/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapi/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_api/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_api/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_api/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/consumers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/routing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/templates/mysite/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/templates/mysite/index.html" afterDir="false" />
@@ -32,6 +33,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
