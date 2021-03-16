@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 def HomeView(request):
-    return render(request, 'mysite/index.html', context={'text':'Hello World'})
+    return render(request, 'mysite/main.html', context={'text':'Hello World'})
 
 def LightbulbView(request):
     return render(request, 'mysite/lightbulbs.html', context={'text':'Hello World'})
