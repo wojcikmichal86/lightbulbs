@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6b28431-4ab0-4243-842a-833d7f1af467" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/images/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/templates/mysite/building.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/templates/mysite/devices.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/templates/mysite/rooms.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/templates/mysite/blinds.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/templates/mysite/blinds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/templates/mysite/lightbulbs.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/templates/mysite/lightbulbs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/templates/mysite/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/templates/mysite/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>

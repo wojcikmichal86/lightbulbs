@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Lightbulb Status</title>
+    <style>
+        td {
+            text-align: center;
+        }
+
+        td.text {
+            background-color: #009edc;
+            border-radius: 10px;
+            width: 25%;
+        }
+
+        img {
+            width: 12%;
+        }
+
+        img.blinds {
+            width: 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <table id="app", width="100%">
+        <tr>
+            <th>Room</th>
+            <th>Lightbulbs</th>
+            <th>Blinds</th>
+            <th>Thermometers</th>
+        </tr>
+        <tr>
+            <td class="text">Room #1</td>
+            <td><img src="{% static 'images/OFFbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/OFFblinds.png' %}"></td>
+            <td class="text">27</td>
+        </tr>
+        <tr>
+            <td class="text">Room #2</td>
+            <td><img src="{% static 'images/ONbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/ONblinds.png' %}"></td>
+            <td class="text">21</td>
+        </tr>
+        <tr>
+            <td class="text">Room #3</td>
+            <td><img src="{% static 'images/OFFbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/ONblinds.png' %}"></td>
+            <td class="text">16</td>
+        </tr>
+        <tr>
+            <td class="text">Room #4</td>
+            <td><img src="{% static 'images/OFFbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/OFFblinds.png' %}"></td>
+            <td class="text">-7</td>
+        </tr>
+        <tr>
+            <td class="text">Room #5</td>
+            <td><img src="{% static 'images/ONbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/ONblinds.png' %}"></td>
+            <td class="text">0</td>
+        </tr>
+        <tr>
+            <td class="text">Room #6</td>
+            <td><img src="{% static 'images/ONbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/ONblinds.png' %}"></td>
+            <td class="text">31</td>
+        </tr>
+        <tr>
+            <td class="text">Room #7</td>
+            <td><img src="{% static 'images/OFFbulb.png' %}"></td>
+            <td><img class='blinds' src="{% static 'images/OFFblinds.png' %}"></td>
+            <td class="text">42</td>
+        </tr>
+    </table>
+    <script>
+
+
+
+        LightbulbSocket.onmessage = function(event){
+            const data = event.data
+            object = JSON.parse(data)
+            console.log(object);
+            document.querySelector('#app').innerHTML = '';
+            header_row = document.createElement('tr')
+            header_row.style.width = '100%';
+            header_row.style.height = '30px';
+            document.querySelector('#app').appendChild(header_row)
+            for (let k in object[0]){
+                th = document.createElement('th')
+                th.innerText = k.toUpperCase()
+                th.setAttribute("style", "background-color: #81ba5a;");
+                th.style.borderRadius = "10px";
+                header_row.appendChild(th);
+            }
+            for (const item of object){
+            tr = document.createElement('tr')
+            tr.setAttribute("style", "background-color: white;");
+            tr.style.height = '30px';
+                for (let k in item){
+                //console.log(k + ' is ' + item[k])
+                td = document.createElement('td');
+                if (k=="turned_on"){
+                image = document.createElement('img');
+                image.style.width = '5%';
+                if (item[k]==true){
+                image.src = "{% static 'images/ONbulb.png' %}";
+                } else {
+                image.src = "{% static 'images/OFFbulb.png' %}";
+                }
+                td.appendChild(image);
+                } else {
+                td.innerText = item[k];
+                td.setAttribute("style", "background-color: #009edc;");
+                td.style.borderRadius = "10px";
+                }
+                td.style.textAlign = "center";
+                tr.appendChild(td);
+                }
+            document.querySelector('#app').appendChild(tr)
+
+            }
+
+        }
+
+    </script>
+</body>
+</html>
